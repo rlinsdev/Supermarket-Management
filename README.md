@@ -13,4 +13,9 @@
 * ASP.NET Core Blazor
 * EF Core
 * SQL Server
-* Identity
+* Identity - Authentication / authorization
+
+## Pattern
+* Clean Architecture
+* Use Case driven development
+
