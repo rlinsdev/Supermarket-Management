@@ -83,6 +83,20 @@ using WebApp.Shared;
 #line hidden
 #nullable disable
 #nullable restore
+#line 12 "D:\Projetos\2023\Supermarket Management System\Code\supermarket\SupermarketManagement\WebApp\_Imports.razor"
+using CoreBusiness;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 13 "D:\Projetos\2023\Supermarket Management System\Code\supermarket\SupermarketManagement\WebApp\_Imports.razor"
+using UseCases;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 3 "D:\Projetos\2023\Supermarket Management System\Code\supermarket\SupermarketManagement\WebApp\Pages\FetchData.razor"
 using WebApp.Data;
 

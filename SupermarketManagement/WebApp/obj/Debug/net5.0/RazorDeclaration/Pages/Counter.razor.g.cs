@@ -82,6 +82,20 @@ using WebApp.Shared;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 12 "D:\Projetos\2023\Supermarket Management System\Code\supermarket\SupermarketManagement\WebApp\_Imports.razor"
+using CoreBusiness;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 13 "D:\Projetos\2023\Supermarket Management System\Code\supermarket\SupermarketManagement\WebApp\_Imports.razor"
+using UseCases;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/counter")]
     public partial class Counter : Microsoft.AspNetCore.Components.ComponentBase
     {

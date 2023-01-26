@@ -59,9 +59,7 @@
   },
   "projectFileDependencyGroups": {
     "net5.0": [
-      "CoreBusiness >= 1.0.0",
-      "Plugins.DataStore.InMemory >= 1.0.0",
-      "UseCases >= 1.0.0"
+      "Plugins.DataStore.InMemory >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -95,14 +93,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "D:\\Projetos\\2023\\Supermarket Management System\\Code\\supermarket\\SupermarketManagement\\CoreBusiness\\CoreBusiness.csproj": {
-              "projectPath": "D:\\Projetos\\2023\\Supermarket Management System\\Code\\supermarket\\SupermarketManagement\\CoreBusiness\\CoreBusiness.csproj"
-            },
             "D:\\Projetos\\2023\\Supermarket Management System\\Code\\supermarket\\SupermarketManagement\\Plugins.DataStore.InMemory\\Plugins.DataStore.InMemory.csproj": {
               "projectPath": "D:\\Projetos\\2023\\Supermarket Management System\\Code\\supermarket\\SupermarketManagement\\Plugins.DataStore.InMemory\\Plugins.DataStore.InMemory.csproj"
-            },
-            "D:\\Projetos\\2023\\Supermarket Management System\\Code\\supermarket\\SupermarketManagement\\UseCases\\UseCases.csproj": {
-              "projectPath": "D:\\Projetos\\2023\\Supermarket Management System\\Code\\supermarket\\SupermarketManagement\\UseCases\\UseCases.csproj"
             }
           }
         }
