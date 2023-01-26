@@ -8,7 +8,7 @@ using UseCases.DataStorePluginInterfaces;
 
 namespace UseCases
 {
-	public class ViewCategoriesUseCase
+	public class ViewCategoriesUseCase : IViewCategoriesUseCase
 	{
 		public ViewCategoriesUseCase(ICategoryRepository categoryRepository)
 		{
