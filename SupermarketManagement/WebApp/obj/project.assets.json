@@ -1,11 +1,68 @@
 {
   "version": 3,
   "targets": {
-    "net5.0": {}
+    "net5.0": {
+      "CoreBusiness/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/CoreBusiness.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CoreBusiness.dll": {}
+        }
+      },
+      "Plugins.DataStore.InMemory/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "UseCases": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Plugins.DataStore.InMemory.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Plugins.DataStore.InMemory.dll": {}
+        }
+      },
+      "UseCases/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "CoreBusiness": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/UseCases.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/UseCases.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "CoreBusiness/1.0.0": {
+      "type": "project",
+      "path": "../CoreBusiness/CoreBusiness.csproj",
+      "msbuildProject": "../CoreBusiness/CoreBusiness.csproj"
+    },
+    "Plugins.DataStore.InMemory/1.0.0": {
+      "type": "project",
+      "path": "../Plugins.DataStore.InMemory/Plugins.DataStore.InMemory.csproj",
+      "msbuildProject": "../Plugins.DataStore.InMemory/Plugins.DataStore.InMemory.csproj"
+    },
+    "UseCases/1.0.0": {
+      "type": "project",
+      "path": "../UseCases/UseCases.csproj",
+      "msbuildProject": "../UseCases/UseCases.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net5.0": []
+    "net5.0": [
+      "CoreBusiness >= 1.0.0",
+      "Plugins.DataStore.InMemory >= 1.0.0",
+      "UseCases >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\rlins\\.nuget\\packages\\": {},
@@ -37,7 +94,17 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\Projetos\\2023\\Supermarket Management System\\Code\\supermarket\\SupermarketManagement\\CoreBusiness\\CoreBusiness.csproj": {
+              "projectPath": "D:\\Projetos\\2023\\Supermarket Management System\\Code\\supermarket\\SupermarketManagement\\CoreBusiness\\CoreBusiness.csproj"
+            },
+            "D:\\Projetos\\2023\\Supermarket Management System\\Code\\supermarket\\SupermarketManagement\\Plugins.DataStore.InMemory\\Plugins.DataStore.InMemory.csproj": {
+              "projectPath": "D:\\Projetos\\2023\\Supermarket Management System\\Code\\supermarket\\SupermarketManagement\\Plugins.DataStore.InMemory\\Plugins.DataStore.InMemory.csproj"
+            },
+            "D:\\Projetos\\2023\\Supermarket Management System\\Code\\supermarket\\SupermarketManagement\\UseCases\\UseCases.csproj": {
+              "projectPath": "D:\\Projetos\\2023\\Supermarket Management System\\Code\\supermarket\\SupermarketManagement\\UseCases\\UseCases.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
