@@ -1,2 +1,2 @@
-# Supermarket-Management
-C# Project: Supermarket Management System | ASP.NET Core Blazor, EF Core, SQL Server, Identity
+# C# Project: Supermarket Management System | ASP.NET Core Blazor, EF Core, SQL Server, Identity
+
