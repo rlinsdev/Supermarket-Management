@@ -19,7 +19,6 @@ namespace UseCases
 		public void Execute(Category category)
 		{
 			categoryRepository.AddCategory(category);
-
 		}
 	}
 }

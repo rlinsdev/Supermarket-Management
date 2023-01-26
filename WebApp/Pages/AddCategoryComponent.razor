@@ -1,23 +1,25 @@
 ﻿@page "/addcategory"
 
+@inject NavigationManager NavigationManager
+@inject IAddCategoryUseCase AddCategoryUseCase
+
 <h3>Add Category</h3>
 
 @if (category != null)
-{
-<EditForm Model="category" class="form-inline" OnValidSubmit="OnValidSubmit">
-    <DataAnnotationsValidator></DataAnnotationsValidator>
-    <ValidationSummary></ValidationSummary>
-    <div class="form-group">
-        <label for="name">Name</label>
-        <InputText id="name" @bind-value="category.Name" class="form-control"></InputText>
-    </div>
-    <div class="form-group">
-        <label for="name">Descricao</label>
-        <InputText id="descricao" @bind-value="category.Description" class="form-control"></InputText>
-    </div>
-    <button type="submit" class="btn btn-primary">Save</button>
-</EditForm>
-
+ {
+    <EditForm Model="category" class="form-inline" OnValidSubmit="OnValidSubmit">
+        <DataAnnotationsValidator></DataAnnotationsValidator>
+        <ValidationSummary></ValidationSummary>
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" @bind-value="category.Name" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label for="name">Descricao</label>
+            <input type="text" id="descricao" @bind-value="category.Description" class="form-control"/>
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+    </EditForm>
 }
 
 @code {
@@ -31,7 +33,8 @@
     }
 
     private void OnValidSubmit()
-		{
-
-		}
+	{
+        AddCategoryUseCase.Execute(category);
+        NavigationManager.NavigateTo("/categories");
+	}
 }
