@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using UseCases;
 using UseCases.DataStorePluginInterfaces;
 using WebApp.Data;
 
@@ -32,7 +33,11 @@ namespace WebApp
 			services.AddServerSideBlazor();
 			services.AddSingleton<WeatherForecastService>();
 
+			// Dependency injection - in Memory repository
 			services.AddScoped<ICategoryRepository, CategoryInMemoryRepository>();
+
+			// Dependency injection - Use Cases and repositories
+			services.AddTransient<IViewCategoriesUseCase, ViewCategoriesUseCase>();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
