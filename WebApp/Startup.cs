@@ -35,6 +35,7 @@ namespace WebApp
 
 			// Dependency injection - in Memory repository
 			services.AddScoped<ICategoryRepository, CategoryInMemoryRepository>();
+			services.AddScoped<IProductRepository, ProductInMemoryRepository>();
 
 			// Dependency injection - Use Cases and repositories
 			services.AddTransient<IViewCategoriesUseCase, ViewCategoriesUseCase>();
@@ -42,6 +43,7 @@ namespace WebApp
 			services.AddTransient<IEditCategoryUseCase, EditCategoryUseCase>();
 			services.AddTransient<IGetCategoryByIdUseCase, GetCategoryByIdUseCase>();
 			services.AddTransient<IDeleteCategoryUseCase, DeleteCategoryUseCase>();
+			services.AddTransient<IViewProductsUseCase, ViewProductsUseCase>();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
