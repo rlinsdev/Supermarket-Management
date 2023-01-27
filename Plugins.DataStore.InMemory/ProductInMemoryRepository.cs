@@ -31,7 +31,7 @@ namespace Plugins.DataStore.InMemory
 			if (products != null && products.Count > 0)
 			{
 				var maxId = products.Max(x => x.CategoryId);
-				product.ProductId = maxId + 1;
+				product.ProductId = maxId.Value + 1;
 			}
 			else
 				product.ProductId = 1;
