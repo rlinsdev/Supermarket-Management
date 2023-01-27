@@ -16,6 +16,7 @@ namespace UseCases
 		{
 			this.productRepository = productRepository;
 		}
+
 		public IEnumerable<Product> Execute()
 		{
 			return productRepository.GetProducts();

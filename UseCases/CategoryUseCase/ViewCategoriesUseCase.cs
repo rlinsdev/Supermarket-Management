@@ -10,12 +10,12 @@ namespace UseCases
 {
 	public class ViewCategoriesUseCase : IViewCategoriesUseCase
 	{
+		public ICategoryRepository CategoryRepository { get; }
+
 		public ViewCategoriesUseCase(ICategoryRepository categoryRepository)
 		{
 			CategoryRepository = categoryRepository;
 		}
-
-		public ICategoryRepository CategoryRepository { get; }
 
 		public IEnumerable<Category> Execute()
 		{

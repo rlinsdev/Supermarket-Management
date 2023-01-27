@@ -19,7 +19,7 @@ namespace Plugins.DataStore.InMemory
 				new Product { ProductId=1, CategoryId=1, Name="Iced Tea", Quantity=100, Price=1.99 },
 				new Product { ProductId=2, CategoryId=1, Name="Canada Dry", Quantity=200, Price=1.99 },
 				new Product { ProductId=3, CategoryId=2, Name="whole wheat bread", Quantity=300, Price=1.50 },
-				new Product { ProductId=3, CategoryId=2, Name="white bread", Quantity=300, Price=1.60 }
+				new Product { ProductId=4, CategoryId=2, Name="white bread", Quantity=300, Price=1.60 }
 			};
 		}
 
