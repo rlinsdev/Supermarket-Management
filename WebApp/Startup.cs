@@ -45,6 +45,7 @@ namespace WebApp
 			services.AddTransient<IDeleteCategoryUseCase, DeleteCategoryUseCase>();
 			services.AddTransient<IViewProductsUseCase, ViewProductsUseCase>();
 			services.AddTransient<IAddProductUseCase, AddProductUseCase>();
+			services.AddTransient<IEditProductUseCase, EditProductUseCase>();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

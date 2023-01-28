@@ -1,0 +1,60 @@
+﻿@page "/editproduct/{productId}"
+
+@inject NavigationManager NavigationManager
+@inject IAddProductUseCase AddProductUseCase
+@inject IGetProductByIdUseCase GetProductById
+@inject IEditProductUseCase EditProductUseCase
+
+<h3>Edit Product</h3>
+
+@if (product != null)
+{
+    <EditForm Model="product" OnValidSubmit="OnValidSubmit">
+        <DataAnnotationsValidator></DataAnnotationsValidator>
+        <ValidationSummary></ValidationSummary>
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" @bind-value="product.Name" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label for="name">Description</label>
+            @*<input type="text" id="description" @bind-value="product.Description" class="form-control" />*@
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="button" class="btn btn-primary" @onclick="OnCancel">cancel</button>
+    </EditForm>
+}
+
+@code {
+    [Parameter]
+    public string ProductId { get; set; }
+
+    private Product product;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        //product = new Product();
+    }
+
+    protected override void OnParametersSet()
+    {
+        base.OnParametersSet();
+
+        int productId = 0;
+        int.TryParse(this.ProductId, out productId);
+        if (productId != 0)
+            this.product = GetProductById.Execute(productId);
+    }
+
+    private void OnValidSubmit()
+    {
+        EditProductUseCase.Execute(product);
+        NavigationManager.NavigateTo("/categories");
+    }
+    private void OnCancel()
+    {
+        NavigationManager.NavigateTo("/categories");
+    }
+}
