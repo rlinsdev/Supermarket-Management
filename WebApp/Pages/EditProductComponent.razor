@@ -4,6 +4,7 @@
 @inject IAddProductUseCase AddProductUseCase
 @inject IGetProductByIdUseCase GetProductById
 @inject IEditProductUseCase EditProductUseCase
+@inject IViewCategoriesUseCase ViewCategoriesUseCase
 
 <h3>Edit Product</h3>
 
@@ -14,12 +15,29 @@
         <ValidationSummary></ValidationSummary>
         <div class="form-group">
             <label for="name">Name</label>
-            <input type="text" id="name" @bind-value="product.Name" class="form-control" />
+            <input type="text" id="name" autofocus @bind-value="product.Name" class="form-control" />
         </div>
         <div class="form-group">
-            <label for="name">Description</label>
-            @*<input type="text" id="description" @bind-value="product.Description" class="form-control" />*@
+            <label for="name">Category</label>
+            <select id="categoryId" class="form-control" @bind="product.CategoryId">
+                <option selected></option>
+                @foreach (var cat in categories)
+                {
+                    <option value="@cat.CategoryId">@cat.Name</option>
+                }
+            </select>
         </div>
+
+        <div class="form-group">
+            <label for="name">Price</label>
+            <input id="price" @bind-value="product.Price" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label for="qty">Quantity</label>
+            <input type="number" id="qty" @bind-value="product.Quantity" class="form-control" />
+        </div>
+
         <button type="submit" class="btn btn-primary">Save</button>
         <button type="button" class="btn btn-primary" @onclick="OnCancel">cancel</button>
     </EditForm>
@@ -30,31 +48,39 @@
     public string ProductId { get; set; }
 
     private Product product;
+    private IEnumerable<Category> categories;
 
     protected override void OnInitialized()
     {
         base.OnInitialized();
-
-        //product = new Product();
+        categories = ViewCategoriesUseCase.Execute();
     }
 
     protected override void OnParametersSet()
     {
         base.OnParametersSet();
 
-        int productId = 0;
-        int.TryParse(this.ProductId, out productId);
-        if (productId != 0)
-            this.product = GetProductById.Execute(productId);
+        if (int.TryParse(this.ProductId, out int iProductID))
+        {
+            var pro = GetProductById.Execute(iProductID);
+            this.product = new Product
+            {
+                CategoryId = pro.CategoryId,
+                Name = pro.Name,
+                Price = pro.Price,
+                ProductId = pro.ProductId,
+                Quantity = pro.Quantity
+            };
+        }
     }
 
     private void OnValidSubmit()
     {
         EditProductUseCase.Execute(product);
-        NavigationManager.NavigateTo("/categories");
+        NavigationManager.NavigateTo("/products");
     }
     private void OnCancel()
     {
-        NavigationManager.NavigateTo("/categories");
+        NavigationManager.NavigateTo("/products");
     }
 }
