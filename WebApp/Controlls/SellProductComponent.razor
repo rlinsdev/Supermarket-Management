@@ -1,0 +1,64 @@
+﻿@inject IGetProductByIdUseCase GetProductByIdUseCase
+
+@if (SelectedProduct != null)
+{
+<EditForm Model="SelectedProduct" OnInvalidSubmit="SellProduct">
+    <DataAnnotationsValidator></DataAnnotationsValidator>
+    <ValidationSummary></ValidationSummary>
+    <div class="form-group">
+        <label for="name">Product Name</label>
+        <input type="text" readonly value="@productToSell.Name" />
+    </div>
+    <div class="form-group">
+        <label for="price">Price</label>
+        <input type="text" readonly value="@string.Format("{0:c}", productToSell.Price)" />
+    </div>
+    <div class="form-group">
+        <label for="qty">Quantity</label>
+        <input type="number" id="qty" readonly value="@productToSell.Quantity" />
+    </div>
+</EditForm>
+<div class="alert alert-danger">@errorMessage
+
+</div>
+}
+
+
+@code {
+
+    private Product productToSell;
+    private string errorMessage;
+
+    [Parameter]
+    public Product SelectedProduct { get; set; }
+
+    [Parameter]
+    public EventCallback<Product> OnProductSold { get; set; }
+
+    protected override void OnParametersSet()
+    {
+        base.OnParametersSet();
+
+        productToSell = new Product
+        {
+            ProductId = SelectedProduct.ProductId,
+            Name = SelectedProduct.Name,
+            CategoryId = SelectedProduct.CategoryId,
+            Price = SelectedProduct.Price,
+            Quantity = 0
+        };
+    }
+
+    private void SellProduct()
+    {
+        var product = GetProductByIdUseCase.Execute(productToSell.ProductId);
+        if (product.Quantity >= productToSell.Quantity)
+        {
+            OnProductSold.InvokeAsync(productToSell);
+        }
+        else
+        {
+            errorMessage = $"{product.Name} has only {product.Quantity} left. It's not enough.";
+        }
+    }
+}

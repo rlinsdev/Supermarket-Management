@@ -7,20 +7,20 @@
 
 @if (category != null)
  {
-<EditForm Model="category" OnValidSubmit="OnValidSubmit">
-    <DataAnnotationsValidator></DataAnnotationsValidator>
-    <ValidationSummary></ValidationSummary>
-    <div class="form-group">
-        <label for="name">Name</label>
-        <input type="text" id="name" autofocus @bind-value="category.Name" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label for="name">Descricao</label>
-        <input type="text" id="descricao" @bind-value="category.Description" class="form-control" />
-    </div>
-    <button type="submit" class="btn btn-primary">Save</button>
-    <button type="button" class="btn btn-primary" @onclick="OnCancel">cancel</button>
-</EditForm>
+    <EditForm Model="category" OnValidSubmit="OnValidSubmit">
+        <DataAnnotationsValidator></DataAnnotationsValidator>
+        <ValidationSummary></ValidationSummary>
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" autofocus @bind-value="category.Name" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label for="name">Descricao</label>
+            <input type="text" id="descricao" @bind-value="category.Description" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="button" class="btn btn-primary" @onclick="OnCancel">cancel</button>
+    </EditForm>
 }
 
 @code {
