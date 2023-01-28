@@ -1,15 +1,9 @@
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Plugins.DataStore.InMemory;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using UseCases;
 using UseCases.DataStorePluginInterfaces;
 using WebApp.Data;
@@ -48,6 +42,7 @@ namespace WebApp
 			services.AddTransient<IEditProductUseCase, EditProductUseCase>();
 			services.AddTransient<IGetProductByIdUseCase, GetProductByIdUseCase>();
 			services.AddTransient<IDeleteProductUseCase, DeleteProductUseCase>();
+			services.AddTransient<IViewProductsByCategory, ViewProductsByCategory>();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
