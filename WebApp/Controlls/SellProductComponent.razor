@@ -1,26 +1,30 @@
 ﻿@inject IGetProductByIdUseCase GetProductByIdUseCase
 
-@if (SelectedProduct != null)
+@if (productToSell != null)
 {
-<EditForm Model="SelectedProduct" OnInvalidSubmit="SellProduct">
-    <DataAnnotationsValidator></DataAnnotationsValidator>
-    <ValidationSummary></ValidationSummary>
-    <div class="form-group">
-        <label for="name">Product Name</label>
-        <input type="text" readonly value="@productToSell.Name" />
-    </div>
-    <div class="form-group">
-        <label for="price">Price</label>
-        <input type="text" readonly value="@string.Format("{0:c}", productToSell.Price)" />
-    </div>
-    <div class="form-group">
-        <label for="qty">Quantity</label>
-        <input type="number" id="qty" readonly value="@productToSell.Quantity" />
-    </div>
-</EditForm>
-<div class="alert alert-danger">@errorMessage
+    <EditForm Model="SelectedProduct" OnInvalidSubmit="SellProduct">
+        <DataAnnotationsValidator></DataAnnotationsValidator>
+        <ValidationSummary></ValidationSummary>
+        <div class="form-group">
+            <label for="name">Product Name</label>
+            <input class="form-control" type="text" readonly value="@productToSell.Name" />
+        </div>
+        <div class="form-group">
+            <label for="price">Price</label>
+            <input class="form-control" type="text" readonly value="@string.Format("{0:c}", productToSell.Price)" />
+        </div>
+        <div class="form-group">
+            <label for="qty">Quantity</label>
+            <input class="form-control" type="number" id="qty" readonly value="@productToSell.Quantity" />
+        </div>
+    </EditForm>
+    @if (@errorMessage != null)
+    {
+        <div class="alert alert-danger">
+            @errorMessage
+        </div>
+    }
 
-</div>
 }
 
 
@@ -39,14 +43,17 @@
     {
         base.OnParametersSet();
 
-        productToSell = new Product
+        if (SelectedProduct != null)
         {
-            ProductId = SelectedProduct.ProductId,
-            Name = SelectedProduct.Name,
-            CategoryId = SelectedProduct.CategoryId,
-            Price = SelectedProduct.Price,
-            Quantity = 0
-        };
+            productToSell = new Product
+            {
+                ProductId = SelectedProduct.ProductId,
+                Name = SelectedProduct.Name,
+                CategoryId = SelectedProduct.CategoryId,
+                Price = SelectedProduct.Price,
+                Quantity = 0
+            };
+        }
     }
 
     private void SellProduct()
