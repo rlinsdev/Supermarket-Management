@@ -51,7 +51,6 @@ namespace Plugins.DataStore.InMemory
 			{
 				categoryToUpdate.Name = category.Name;
 				categoryToUpdate.Description = category.Description;
-
 			}
 		}
 
