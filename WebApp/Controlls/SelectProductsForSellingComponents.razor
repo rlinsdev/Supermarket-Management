@@ -10,25 +10,28 @@
             <option value="@cat.CategoryId">@cat.Name</option>
         }
     </select>
+
+    @if (productsInCategory != null)
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Prod Name</th>
+                    <th>Qty</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var prod in productsInCategory)
+                {
+                    <tr>
+                        <td>@prod.Name</td>
+                        <td>@prod.Quantity</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
 </div>
-@if (productsInCategory != null)
-{
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Prod Name</th>
-                <th>Qty</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var prod in productsInCategory)
-            {
-                <tr>@prod.Name</tr>
-                <tr>@prod.Quantity</tr>
-            }
-        </tbody>
-    </table>
-}
 
 
 @code {
