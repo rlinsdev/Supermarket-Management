@@ -4,6 +4,7 @@
 @inject NavigationManager NavigationManager
 @inject IViewProductsUseCase ViewProductsUseCase
 @inject IGetCategoryByIdUseCase GetCategoryByIdUseCase
+@inject IDeleteProductUseCase DeleteProductUseCase
 
 @if (products != null)
 {
@@ -25,14 +26,17 @@
                     <td>@product.Name</td>
                     <td>@Math.Round(product.Price.Value , 2)</td>
                     <td>@product.Quantity</td>
-                    <td><button type="button" class="btn btn-link" @onclick="@(() => OnEditProduct(product))">Edit</button></td>
+                    <td>
+                        <button type="button" class="btn btn-link" @onclick="@(() => OnEditProduct(product))">Edit</button>&nbsp;
+                        <button type="button" class="btn btn-link" @onclick="@(() => OnDeleteProduct(product))">Remove</button>
+                    </td>
                 </tr>
             }
         </tbody>
     </table>
 }
 <br />
-<button type="button" @onclick="OnClickProduct" class="btn btn-primary">Add Category</button>
+<button type="button" @onclick="OnClickProduct" class="btn btn-primary">Add Product</button>
 
 @code {
 
@@ -42,13 +46,24 @@
     {
         base.OnInitialized();
 
-        products = ViewProductsUseCase.Execute();
+        LoadProducts();
     }
 
     private void OnEditProduct(Product product)
-	{
+    {
         NavigationManager.NavigateTo($"/editProduct/{product.ProductId}");
-	}
+    }
+
+    private void LoadProducts()
+    {
+        products = ViewProductsUseCase.Execute();
+    }
+
+    private void OnDeleteProduct(Product product)
+    {
+        DeleteProductUseCase.Delete(product.ProductId);
+        LoadProducts();
+    }
 
     private void OnClickProduct()
     {
