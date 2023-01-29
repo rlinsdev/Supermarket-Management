@@ -36,6 +36,9 @@
     private string errorMessage;
 
     [Parameter]
+    public string CashierName { get; set; }
+
+    [Parameter]
     public Product SelectedProduct { get; set; }
 
     [Parameter]
@@ -68,7 +71,7 @@
         else if (product.Quantity >= productToSell.Quantity)
         {
             OnProductSold.InvokeAsync(productToSell);
-            SellProductUseCase.Execute(productToSell.ProductId, productToSell.Quantity.Value);
+            SellProductUseCase.Execute(CashierName, productToSell.ProductId, productToSell.Quantity.Value);
             errorMessage = null;
         }
         else

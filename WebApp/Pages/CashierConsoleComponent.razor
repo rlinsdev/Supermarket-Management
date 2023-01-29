@@ -4,7 +4,10 @@
 <div class="row">
     <div class="col-4">
         <SelectProductsForSellingComponents OnProductSelected="SelectProduct" ></SelectProductsForSellingComponents>
-        <SellProductComponent SelectedProduct="selectedProduct" OnProductSold="SellProduct" ></SellProductComponent>
+        <SellProductComponent 
+                              SelectedProduct="selectedProduct"
+                              OnProductSold="SellProduct" 
+                              CashierName="@CashierName"></SellProductComponent>
     </div>
     <div class="col">Place holder</div>
 </div>
@@ -12,6 +15,7 @@
 @code {
 
     private Product selectedProduct;
+    private string CashierName;
 
     private void SelectProduct(Product product)
     {
@@ -22,5 +26,12 @@
     {
 
     }
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        CashierName = "Rodrigo";
+    }
+
 
 }

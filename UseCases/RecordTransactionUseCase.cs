@@ -2,7 +2,7 @@
 
 namespace UseCases
 {
-	public class RecordTransactionUseCase
+	public class RecordTransactionUseCase : IRecordTransactionUseCase
 	{
 		private readonly ITransactionRepository transactionRepository;
 		private readonly IGetProductByIdUseCase getProductByIdUseCase;
