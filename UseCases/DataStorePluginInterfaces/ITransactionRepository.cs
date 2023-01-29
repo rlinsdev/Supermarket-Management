@@ -8,6 +8,6 @@ namespace UseCases.DataStorePluginInterfaces
 	{
 		public IEnumerable<Transaction> Get(string cashierName);
 		public IEnumerable<Transaction> GetByDay(string cashierName, DateTime date);
-		public void Save(string casherName, int productId, double? price, int beforeQty, int soldQty);
+		public void Save(string casherName, int productId, Product product, int soldQty);
 	}
 }

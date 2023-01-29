@@ -1,5 +1,44 @@
-﻿<h3>TodayTransactionComponent</h3>
+﻿@inject IGetTodayTransactionUseCase GetTodayTransactionUseCase
+@if (transactions != null)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Cashier Name</th>
+                <th>Poduct Name</th>
+                <th>Time</th>
+                <th>Qty before</th>
+                <th>Qty after</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var tran in transactions)
+            {
+            <tr>
+                <td>@tran.CashierName</td>
+                <td>@tran.</td>
+                <td>@tran.CashierName</td>
+                <td>@tran.CashierName</td>
+                <td>@tran.CashierName</td>
+            </tr>
+
+            }
+        </tbody>
+
+    </table>
+
+}
+
 
 @code {
+
+    private IEnumerable<Transaction> transactions;
+
+    public void LoadTransactions(string cashierName)
+    {
+        transactions = GetTodayTransactionUseCase.Execute(cashierName);
+        StateHasChanged();
+    }
+
 
 }
