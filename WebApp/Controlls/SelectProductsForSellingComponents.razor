@@ -51,6 +51,7 @@
         {
             selectedCategoryId = value;
             productsInCategory = ViewProductsByCategory.Execute(value);
+            OnSelectProduct(null);
             StateHasChanged();
         }
     }
@@ -68,6 +69,7 @@
     private void OnSelectProduct(Product product)
     {
         OnProductSelected.InvokeAsync(product);
-        selectedProductId = product.ProductId;
+        if (product != null)
+            selectedProductId = product.ProductId;
     }
 }
