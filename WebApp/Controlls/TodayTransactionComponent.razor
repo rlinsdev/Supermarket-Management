@@ -7,26 +7,27 @@
                 <th>Cashier Name</th>
                 <th>Poduct Name</th>
                 <th>Time</th>
-                <th>Qty before</th>
-                <th>Qty after</th>
+                <th>Qty Before</th>
+                <th>Qty Sold</th>
+                <th>Qty After</th>
+                <th>Sold Amt</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var tran in transactions)
             {
-            <tr>
-                <td>@tran.CashierName</td>
-                <td>@tran.</td>
-                <td>@tran.CashierName</td>
-                <td>@tran.CashierName</td>
-                <td>@tran.CashierName</td>
-            </tr>
-
+                <tr>
+                    <td>@tran.CashierName</td>
+                    <td>@tran.ProductName</td>
+                    <td>@tran.TimeStamp.ToString("dd/MM/yyyy hh:mm")</td>
+                    <td>@tran.BeforeQty</td>
+                    <td>@tran.SoldQty</td>
+                    <td>@(tran.BeforeQty - tran.SoldQty)</td>
+                    <td>@string.Format("{0:c}", (tran.SoldQty * tran.Price))</td>
+                </tr>
             }
         </tbody>
-
     </table>
-
 }
 
 
