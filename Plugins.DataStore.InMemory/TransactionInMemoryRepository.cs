@@ -15,10 +15,14 @@ namespace Plugins.DataStore.InMemory
 			transactions = new List<Transaction>();
 		}
 
+		public IEnumerable<Transaction> Get()
+		{
+			return transactions;
+		}
 
 		public IEnumerable<Transaction> GetByDay(DateTime date)
 		{
-			throw new NotImplementedException();
+			return transactions.Where(x => x.TimeStamp.Date == date.Date);
 		}
 
 		public void Save(string cashierName, int productId, double? price, int qty)

@@ -70,6 +70,9 @@
             errorMessage = $"Quantity [{productToSell.Quantity}] Invalid. Must be greather than 0";
         else if (product.Quantity >= productToSell.Quantity)
         {
+            if (string.IsNullOrEmpty(CashierName))
+                throw new ApplicationException("Cashier Name is missing. Cannot sell the product.");
+
             OnProductSold.InvokeAsync(productToSell);
             SellProductUseCase.Execute(CashierName, productToSell.ProductId, productToSell.Quantity.Value);
             errorMessage = null;
