@@ -17,8 +17,8 @@ namespace UseCases
 
 		public void Execute(string cashierName, int productId, int qty)
 		{
-			var price = getProductByIdUseCase.Execute(productId).Price;
-			transactionRepository.Save(cashierName, productId, price, qty);
+			var product = getProductByIdUseCase.Execute(productId);
+			transactionRepository.Save(cashierName, productId, product.Price.Value, product.Quantity.Value, qty);
 		}
 	}
 }

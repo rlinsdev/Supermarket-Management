@@ -30,7 +30,7 @@ namespace Plugins.DataStore.InMemory
 				string.Equals(x.CashierName, cashierName, StringComparison.OrdinalIgnoreCase));
 		}
 
-		public void Save(string cashierName, int productId, double? price, int qty)
+		public void Save(string cashierName, int productId, double? price, int beforeQty, int soldQty)
 		{
 			int maxId = 0;
 			if (transactions != null && transactions.Count > 0)
@@ -43,7 +43,8 @@ namespace Plugins.DataStore.InMemory
 				ProductId = productId,
 				TimeStamp = DateTime.Now,
 				Price = price,
-				Qty = qty,
+				SoldQty = soldQty,
+				BeforeQty = beforeQty,
 				CashierName = cashierName
 			});
 		}
