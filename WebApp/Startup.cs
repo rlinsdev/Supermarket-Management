@@ -48,6 +48,7 @@ namespace WebApp
 			services.AddTransient<IRecordTransactionUseCase, RecordTransactionUseCase>();
 			services.AddTransient<IGetTodayTransactionUseCase, GetTodayTransactionUseCase>();
 			services.AddTransient<IGetTodayTransactionUseCase, GetTodayTransactionUseCase>();
+			services.AddTransient<IGetTransactionsUseCase, GetTransactionsUseCase>();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
