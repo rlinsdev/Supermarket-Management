@@ -15,14 +15,19 @@ namespace Plugins.DataStore.InMemory
 			transactions = new List<Transaction>();
 		}
 
-		public IEnumerable<Transaction> Get()
+		public IEnumerable<Transaction> Get(string cashierName)
 		{
-			return transactions;
+			if (string.IsNullOrEmpty(cashierName))
+				return transactions;
+			return transactions.Where(x => string.Equals(x.CashierName, cashierName, StringComparison.OrdinalIgnoreCase));
 		}
 
-		public IEnumerable<Transaction> GetByDay(DateTime date)
+		public IEnumerable<Transaction> GetByDay(string cashierName, DateTime date)
 		{
-			return transactions.Where(x => x.TimeStamp.Date == date.Date);
+			if (string.IsNullOrEmpty(cashierName))								 
+				return transactions;
+			return transactions.Where(x => x.TimeStamp.Date == date.Date &&
+				string.Equals(x.CashierName, cashierName, StringComparison.OrdinalIgnoreCase));
 		}
 
 		public void Save(string cashierName, int productId, double? price, int qty)
