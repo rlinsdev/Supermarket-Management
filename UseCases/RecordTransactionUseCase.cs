@@ -15,10 +15,10 @@ namespace UseCases
 			getProductByIdUseCase = GetProductByIdUseCase;
 		}
 
-		public void Execute(int productId, int qty)
+		public void Execute(string cashierName, int productId, int qty)
 		{
 			var price = getProductByIdUseCase.Execute(productId).Price;
-			transactionRepository.Save(productId, price, qty);
+			transactionRepository.Save(cashierName, productId, price, qty);
 		}
 	}
 }
