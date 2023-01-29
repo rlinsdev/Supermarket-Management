@@ -8,7 +8,7 @@ using UseCases.DataStorePluginInterfaces;
 
 namespace UseCases
 {
-	public class GetTodayTransactionUseCase
+	public class GetTodayTransactionUseCase : IGetTodayTransactionUseCase
 	{
 		public GetTodayTransactionUseCase(ITransactionRepository transactionRepository)
 		{
