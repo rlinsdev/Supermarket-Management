@@ -24,7 +24,8 @@ namespace Plugins.DataStore.InMemory
 
 		public void AddCategory(Category category)
 		{
-			if (categories.Any(x => x.Name.Equals(category.Name, StringComparison.OrdinalIgnoreCase)))
+			//if (categories.Any(x => x.Name.Equals(category.Name, StringComparison.OrdinalIgnoreCase)))
+			if (categories.Any(x => x.Name.ToLower() == category.Name.ToLower()))
 				return;
 
 			if (categories != null && categories.Count > 0)

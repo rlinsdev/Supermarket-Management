@@ -25,7 +25,8 @@ namespace Plugins.DataStore.InMemory
 
 		public void AddProduct(Product product)
 		{
-			if (products.Any(x => x.Name.Equals(product.Name, StringComparison.OrdinalIgnoreCase)))
+			//if (products.Any(x => x.Name.Equals(product.Name, StringComparison.OrdinalIgnoreCase)))
+			if (products.Any(x => x.Name.ToLower() == product.Name.ToLower()))
 				return;
 
 			if (products != null && products.Count > 0)

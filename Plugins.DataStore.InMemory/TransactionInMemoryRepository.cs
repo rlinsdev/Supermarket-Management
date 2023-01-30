@@ -19,7 +19,8 @@ namespace Plugins.DataStore.InMemory
 		{
 			if (string.IsNullOrEmpty(cashierName))
 				return transactions;
-			return transactions.Where(x => string.Equals(x.CashierName, cashierName, StringComparison.OrdinalIgnoreCase));
+			//return transactions.Where(x => string.Equals(x.CashierName, cashierName, StringComparison.OrdinalIgnoreCase));
+			return transactions.Where(x => x.CashierName.ToLower() == cashierName.ToLower());
 		}
 
 		public IEnumerable<Transaction> GetByDay(string cashierName, DateTime date)
@@ -27,7 +28,8 @@ namespace Plugins.DataStore.InMemory
 			if (string.IsNullOrEmpty(cashierName))
 				return transactions.Where(x => x.TimeStamp.Date == date.Date);
 			return transactions.Where(x => x.TimeStamp.Date == date.Date &&
-				string.Equals(x.CashierName, cashierName, StringComparison.OrdinalIgnoreCase));
+				//string.Equals(x.CashierName, cashierName, StringComparison.OrdinalIgnoreCase));
+				x.CashierName.ToLower() == cashierName.ToLower());
 		}
 
 		public void Save(string cashierName, int productId, Product product, int soldQty)
@@ -56,7 +58,8 @@ namespace Plugins.DataStore.InMemory
 				return transactions.Where(x => x.TimeStamp.Date > startDate && x.TimeStamp < endDate.AddDays(1));
 
 			return transactions.Where(x => x.TimeStamp.Date > startDate && x.TimeStamp < endDate.AddDays(1) &&
-				string.Equals(x.CashierName, cashierName, StringComparison.OrdinalIgnoreCase));
+				//string.Equals(x.CashierName, cashierName, StringComparison.OrdinalIgnoreCase));
+				x.CashierName.ToLower() == cashierName.ToLower());
 		}
 	}
 }

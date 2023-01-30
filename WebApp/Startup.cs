@@ -33,12 +33,17 @@ namespace WebApp
 			{
 				options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
 			});
-			
+
 
 			// Dependency injection - in Memory repository
-			services.AddScoped<ICategoryRepository, CategoryInMemoryRepository>();
-			services.AddScoped<IProductRepository, ProductInMemoryRepository>();
-			services.AddScoped<ITransactionRepository, TransactionInMemoryRepository>();
+			//services.AddScoped<ICategoryRepository, CategoryInMemoryRepository>();
+			//services.AddScoped<IProductRepository, ProductInMemoryRepository>();
+			//services.AddScoped<ITransactionRepository, TransactionInMemoryRepository>();
+
+			// Dependency injection - Entity Framework
+			services.AddScoped<ICategoryRepository, CategoryRepository>();
+			services.AddScoped<IProductRepository, ProductRepository>();
+			services.AddScoped<ITransactionRepository, TransactionsRepository>();
 
 			// Dependency injection - Use Cases and repositories
 			services.AddTransient<IViewCategoriesUseCase, ViewCategoriesUseCase>();
