@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Plugins.DataStore.InMemory\Plugins.DataStore.InMemory.csproj" />
+    <ProjectReference Include="..\Plugins.DataStore.SQL\Plugins.DataStore.SQL.csproj" />
   </ItemGroup>
 
 </Project>

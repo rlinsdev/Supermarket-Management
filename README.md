@@ -14,3 +14,9 @@
 * Clean Architecture
 * Use Case driven development
 
+## Package Manager console
+```
+# Project: Plugins.DataStore.SQL
+$ Add-Migration Init
+```
+
