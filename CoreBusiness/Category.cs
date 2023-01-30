@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace CoreBusiness
@@ -10,5 +11,8 @@ namespace CoreBusiness
 		public string Name { get; set; }
 
 		public string Description { get; set; }
+
+		// Navigation propert to EF
+		public List<Product> Products { get; set; }
 	}
 }
