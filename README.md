@@ -8,6 +8,7 @@
 * ASP.NET Core Blazor
 * EF Core
 * SQL Server
+* Migration
 * Identity - Authentication / authorization
 
 ## Pattern
@@ -16,7 +17,10 @@
 
 ## Package Manager console
 ```
-# Project: Plugins.DataStore.SQL
+## Project: Plugins.DataStore.SQL
 $ Add-Migration Init
+$ Update-Database
 ```
 
+### SQL Management Studio:
+Server Name: '(localdb)\MSSQLLocalDB'
